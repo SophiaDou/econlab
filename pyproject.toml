@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "econlab"
+version = "0.1.0"
+description = "Econometrics research toolbox: DID/IV/RDD/Panel/TS with reproducible pipelines"
+authors = [{name = "Sophia/EconLab"}]
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+  "numpy",
+  "pandas",
+  "scipy",
+  "matplotlib",
+  "seaborn",
+  "statsmodels",
+  "typer",
+  "pyyaml",
+  "requests"
+]
+
+[project.scripts]
+econlab = "cli.main:app"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["econlab*", "cli*"]
+exclude = ["tests*", "examples*", "data*"]

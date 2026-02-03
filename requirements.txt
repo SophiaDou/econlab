@@ -1,0 +1,12 @@
+numpy
+pandas
+scipy
+matplotlib
+seaborn
+statsmodels
+typer
+pyyaml
+requests
+openpyxl
+pytest
+statsmodels
