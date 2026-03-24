@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python -m pytest tests/test_ols.py -v --tb=short)",
+      "Bash(py --version)",
+      "Bash(/c/Work/03_Projects/Economic/venv/Scripts/python.exe -c \"import pandas, statsmodels, linearmodels, scipy; print\\('All core packages OK'\\)\" 2>&1)",
+      "Bash(/c/Work/03_Projects/Economic/venv/Scripts/python.exe -c \"import pandas, statsmodels, scipy; print\\('pandas, statsmodels, scipy OK'\\)\" 2>&1)",
+      "Bash(/c/Work/03_Projects/Economic/venv/Scripts/python.exe -m pytest tests/test_ols.py -v --tb=short)",
+      "Bash(/c/Work/03_Projects/Economic/venv/Scripts/pip.exe install:*)"
+    ]
+  }
+}

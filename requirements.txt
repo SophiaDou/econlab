@@ -4,9 +4,10 @@ scipy
 matplotlib
 seaborn
 statsmodels
+linearmodels
+scikit-learn
 typer
 pyyaml
 requests
 openpyxl
 pytest
-statsmodels

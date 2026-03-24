@@ -1,0 +1,98 @@
+  econlab/                                                                                                                                         
+  ├── core/                                                                                                                                        
+  │   ├── ols.py          (existing)
+  │   ├── iv.py           NEW — IV/2SLS with first-stage F, Sargan, Wu-Hausman                                                                     
+  │   └── quantile.py     NEW — Quantile regression across distributional quantiles                                                                
+  ├── causal/                                                                                                                                      
+  │   ├── did.py          (existing)                                                                                                               
+  │   ├── staggered.py    NEW — Sun-Abraham, Callaway-Sant'Anna, Bacon decomp                                                                      
+  │   ├── rdd.py          NEW — Sharp/Fuzzy RDD, McCrary density test, IK bandwidth                                                                
+  │   ├── synthetic.py    NEW — Abadie synthetic control (SLSQP optimization)
+  │   └── matching.py     NEW — PSM, IPW, Doubly Robust, balance table                                                                             
+  ├── panel/              NEW module                                                                                                               
+  │   ├── re.py           — RE GLS, FE within, Hausman test                                                                                       
+  │   └── gmm.py          — Arellano-Bond diff-GMM, System GMM                                                                                     
+  ├── timeseries/         NEW module                                                                                                               
+  │   ├── unitroot.py     — ADF, KPSS, Phillips-Perron, unit_root_summary()                                                                        
+  │   ├── cointegration.py — Engle-Granger, Johansen trace/max-eigenvalue                                                                          
+  │   └── var.py          — VAR, Granger causality, IRF, FEVD                                                                                      
+  ├── diagnostics/        NEW module                                                                                                               
+  │   └── tests.py        — VIF, Breusch-Pagan, White, Breusch-Godfrey, RESET, DW                                                                  
+  ├── robust/                                                                                                                                      
+  │   └── bootstrap.py    NEW — Wild cluster bootstrap (Cameron-Gelbach-Miller)
+  └── utils/                                                                                                                                           
+	  ├── tables.py       NEW — Stargazer-style multi-model regression tables
+      └── power.py        NEW — Power analysis, MDE, sample size (with clustering/ICC)   
+
+  ---                                                                                                                                            
+  EconLab v0.2 — What Was Added                                                                                                                                                                                                                                                                   
+  econlab/core/                                                                                                                                  
+  ┌─────────────┬──────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │    File     │                                          New Functions                                           │                             
+  ├─────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────┤
+  │ iv.py       │ iv_2sls() — 2SLS with first-stage F-stat, Sargan overidentification, Wu-Hausman endogeneity test │
+  ├─────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────┤
+  │ quantile.py │ quantile_reg(), quantile_summary() — distributional effects across quantiles                     │                             
+  └─────────────┴──────────────────────────────────────────────────────────────────────────────────────────────────┘                                                                                                                                                                              
+  econlab/causal/                                                                                                                                
+
+  ┌──────────────┬──────────────────────────────────────────────────────────────────────────────────────────────┐
+  │     File     │                                        New Functions                                         │
+  ├──────────────┼──────────────────────────────────────────────────────────────────────────────────────────────┤
+  │ staggered.py │ sun_abraham(), callaway_santanna(), bacon_decomp() — modern heterogeneity-robust DID         │
+  ├──────────────┼──────────────────────────────────────────────────────────────────────────────────────────────┤
+  │ rdd.py       │ rdd_sharp(), rdd_fuzzy(), mccrary_density_test(), _ik_bandwidth() — regression discontinuity │                                
+  ├──────────────┼──────────────────────────────────────────────────────────────────────────────────────────────┤                                  
+  │ synthetic.py │ synthetic_control() — Abadie et al., SLSQP weight optimization                               │                                
+  ├──────────────┼──────────────────────────────────────────────────────────────────────────────────────────────┤                                  
+  │ matching.py  │ propensity_score_match(), ipw_estimate(), doubly_robust(), covariate_balance()               │
+  └──────────────┴──────────────────────────────────────────────────────────────────────────────────────────────┘                                   
+  econlab/panel/ (new module)                                                                                                                       
+  ┌────────┬────────────────────────────────────────────────────────────────────────────┐                                                        
+  │  File  │                               New Functions                                │
+  ├────────┼────────────────────────────────────────────────────────────────────────────┤
+  │ re.py  │ fe_panel(), re_panel(), hausman_test()                                     │
+  ├────────┼────────────────────────────────────────────────────────────────────────────┤
+  │ gmm.py │ diff_gmm() (Arellano-Bond), sys_gmm() (Blundell-Bond) with AR/Sargan tests │                                                        
+  └────────┴────────────────────────────────────────────────────────────────────────────┘                                                                                                                                                                                                         
+  econlab/timeseries/ (new module)                                                                                                               
+
+  ┌──────────────────┬────────────────────────────────────────────────────────────┐                                                                
+  │       File       │                       New Functions                        │
+  ├──────────────────┼────────────────────────────────────────────────────────────┤                                                              
+  │ unitroot.py      │ adf_test(), kpss_test(), pp_test(), unit_root_summary()    │
+  ├──────────────────┼────────────────────────────────────────────────────────────┤
+  │ cointegration.py │ engle_granger(), johansen_test()                           │
+  ├──────────────────┼────────────────────────────────────────────────────────────┤                                                                
+  │ var.py           │ estimate_var(), granger_causality(), var_irf(), var_fevd() │
+  └──────────────────┴────────────────────────────────────────────────────────────┘                                                                
+  econlab/diagnostics/ (new module)                                                                                                              
+  
+  ┌──────────┬───────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │   File   │                                                   New Functions                                                   │
+  ├──────────┼───────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+  │ tests.py │ vif(), breusch_pagan(), white_test(), breusch_godfrey(), ramsey_reset(), durbin_watson(), specification_summary() │
+  └──────────┴───────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+  econlab/robust/
+                                                                                                                                                 
+  ┌──────────────┬──────────────────────────────────────────────────────────────────────────────────┐
+  │     File     │                                  New Functions                                   │
+  ├──────────────┼──────────────────────────────────────────────────────────────────────────────────┤
+  │ bootstrap.py │ wild_cluster_bootstrap() — Cameron-Gelbach-Miller with Rademacher/Mammen weights │
+  └──────────────┴──────────────────────────────────────────────────────────────────────────────────┘
+  econlab/utils/
+                                                                                                                                                 
+  ┌───────────┬───────────────────────────────────────────────────────────────────────────────────┐
+  │   File    │                                   New Functions                                   │
+  ├───────────┼───────────────────────────────────────────────────────────────────────────────────┤
+  │ tables.py │ regression_table() (LaTeX/HTML/text, Stargazer-style), coef_plot()                │
+  ├───────────┼───────────────────────────────────────────────────────────────────────────────────┤
+  │ power.py  │ power_analysis(), mde(), sample_size(), power_curve() with ICC/clustering support │                                              
+  └───────────┴───────────────────────────────────────────────────────────────────────────────────┘                                                                                                                                                                                               
+  Infrastructure                                                                                                                                 
+
+  - cli/main.py — new commands: ols, iv, rdd, fe, re, var                                                                                          
+  - pyproject.toml / requirements.txt — added linearmodels, scikit-learn
+  - tests/ — new test files for IV, RDD, and diagnostics; staggered DID tests added                                                                
+  Install the new dependencies with:                                                                                                               
+  pip install linearmodels scikit-learn
